@@ -31,14 +31,18 @@ export default function Navbar() {
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
 
-                <ul className="hidden md:flex space-x-4">
+                <ul className="hidden md:flex  space-x-4">
                     {routes.map((route) => (
-                        <li key={route.path}>
-                            <NavLink to={route.path} className={({ isActive }) => isActive ? "text-white font-bold" : "text-white hover:text-blue-900"}>
+                        <li key={route.path} className="flex items-center">
+                            <NavLink to={route.path} className={({ isActive }) => isActive ? "font-bold bg-teal-500 rounded-sm p-2 " : " p-2 rounded-sm bg-indigo-300 hover:bg-indigo-900  hover:text-white"}>
                                 {route.name}
                             </NavLink>
+                            
                         </li>
                     ))}
+                    <li  className=" flex items-center">
+                        <button className=" bg-indigo-300 p-2  hover:bg-indigo-900 hover:text-white rounded-sm ">Login</button>
+                    </li>
                 </ul>
             </div>
 

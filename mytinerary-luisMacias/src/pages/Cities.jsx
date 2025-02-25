@@ -1,7 +1,7 @@
 function Cities(){
     return(
-        <div>
-            cities
+        <div className="flex justify-center items-center bg-teal-500 h-[95vh]">
+            <p className="font-bold text-4xl">...Under Construction</p>
         </div>
     )
 }
