@@ -97,10 +97,10 @@ function Home() {
                                         </div>
                                     ))}
                                 </div>
-                                <button onClick={prevSlide} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full shadow-md">
+                                <button onClick={prevSlide} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-900/30 p-2 rounded-full shadow-md">
                                     ◀
                                 </button>
-                                <button onClick={nextSlide} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full shadow-md ">
+                                <button onClick={nextSlide} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-900/30 p-2 rounded-full shadow-md ">
                                     ▶
                                 </button>
                             </div>
