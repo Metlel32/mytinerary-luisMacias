@@ -21,7 +21,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="w-full  bg-emerald-800 border-b-1 ">
+        <nav className="w-full  bg-gray-900 border-b-1 ">
             <div className=" container mx-auto flex justify-between items-center p-4">
                 <div className="flex space-x-4">
                     <Leaf className="w-10 h-10 text-white" />
@@ -34,7 +34,7 @@ export default function Navbar() {
                 <ul className="hidden md:flex  space-x-4">
                     {routes.map((route) => (
                         <li key={route.path} className="flex items-center">
-                            <NavLink to={route.path} className={({ isActive }) => isActive ? "font-bold bg-teal-500 rounded-sm p-2 " : " p-2 rounded-sm bg-indigo-300 hover:bg-indigo-900  hover:text-white"}>
+                            <NavLink to={route.path} className={({ isActive }) => isActive ? "font-bold bg-indigo-300 rounded-sm p-2 " : " p-2 rounded-sm bg-indigo-300 hover:bg-indigo-600  hover:text-white"}>
                                 {route.name}
                             </NavLink>
                             
