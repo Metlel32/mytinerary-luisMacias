@@ -33,6 +33,7 @@ function Home() {
         return () => clearInterval(interval)
     }, [index])
 
+
     const prevSlide = () => {
         setIndex((pre) => (pre === 0 ? totalSections - 1 : pre - 1))
     }
