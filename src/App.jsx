@@ -4,7 +4,9 @@ import NotFound from './pages/NotFound'
 import './App.css'
 import StandartdLayaout from './layaouts/StandardLayaout'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 function App() {
+
 
 
   const router = createBrowserRouter(
@@ -33,10 +35,16 @@ function App() {
       }
     ]
   )
+
+
+
+
+
+
   return (
     <>
-    <RouterProvider router={router}></RouterProvider>
-
+    
+    <RouterProvider router={router} ></RouterProvider>
     
     </>
   )

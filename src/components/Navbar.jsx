@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Route } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { Menu, X , Leaf } from "lucide-react";
+    import { NavLink } from "react-router-dom";
+    import { Menu, X , Leaf } from "lucide-react";
 
 
 const routes = [
