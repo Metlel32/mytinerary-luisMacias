@@ -61,7 +61,7 @@ function Home() {
                 <div className="flex flex-col justify-center items-center bg-white/70 m-5 md:m-30 p-5   rounded-xl">
                     <h1 className="text-4xl font-bold text-black mb-5">My Tineraries</h1>
                     <p className="text-black text-2xl text-center">Discover your ideal adventure, crafted by locals who live and breathe their cities!</p>
-                    <button onClick={handleRedirect} className="bg-gray-900 text-xl text-white px-4 py-2 rounded-md hover:bg-gray-500 mt-5 transition">
+                    <button onClick={handleRedirect} className="bg-gray-900 text-xl  text-white px-4 py-2 rounded-md hover:bg-gray-500 mt-5 transition">
                         Explore more
                     </button>
                 </div>
@@ -92,17 +92,13 @@ function Home() {
                                     {Array.from({ length: totalSections }).map((_, sectionIndex) => (
                                         <div key={sectionIndex} className="grid grid-cols-1 md:grid-cols-2  md:grid-rows-2  gap-4 w-full flex-shrink-0">
                                             {imagesCorrousel.slice(sectionIndex * itemsPerPage, (sectionIndex + 1) * itemsPerPage).map((src, imgIndex) => (
-                                                <img key={imgIndex} src={src} alt={`Slide ${sectionIndex * itemsPerPage + imgIndex + 1}`} className="w-full h-full rounded-xl "/>
+                                                <img key={imgIndex} src={src} alt={`Slide ${sectionIndex * itemsPerPage + imgIndex + 1}`} className="w-full h-full rounded-xl  "/>
                                             ))}
                                         </div>
                                     ))}
                                 </div>
-                                <button onClick={prevSlide} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-900/30 p-2 rounded-full shadow-md">
-                                    ◀
-                                </button>
-                                <button onClick={nextSlide} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-900/30 p-2 rounded-full shadow-md ">
-                                    ▶
-                                </button>
+                                <button onClick={prevSlide} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-900/70 p-2 rounded-full shadow-md">◀</button>
+                                <button onClick={nextSlide} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-900/70 p-2 rounded-full shadow-md ">▶</button>
                             </div>
                         </div>
 
