@@ -4,6 +4,7 @@ import NotFound from './pages/NotFound'
 import './App.css'
 import StandartdLayaout from './layaouts/StandardLayaout'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import CityDetail from './components/CityDetails'
 
 function App() {
 
@@ -13,19 +14,23 @@ function App() {
     [
       {
         path: "/",
-        element: <StandartdLayaout/>,
+        element: <StandartdLayaout />,
         children: [
           {
             path: "",
-            element: <Home/>
+            element: <Home />
           },
           {
             path: "/home",
-            element: <Home/>
+            element: <Home />
           },
           {
             path: "/cities",
-            element: <Cities/>
+            element: <Cities />
+          },
+          {
+            path: "/cities/:id", 
+            element: <CityDetail/>
           }
         ]
       },
@@ -43,9 +48,9 @@ function App() {
 
   return (
     <>
-    
-    <RouterProvider router={router} ></RouterProvider>
-    
+
+      <RouterProvider router={router} ></RouterProvider>
+
     </>
   )
 }
