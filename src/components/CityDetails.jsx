@@ -24,7 +24,7 @@ function CityDetail() {
 
         fetchCity()
     }, [id])
-    console.log(city);
+
 
 
     if (loading) {
@@ -51,34 +51,27 @@ function CityDetail() {
 
 
 
-            <div className="bg-orange-500 w-[99vw] p-14 flex items-center justify-center">
-                <div>
-                    <div className="	bg-white   w-[80%]  rounded-2xl flex items-center justify-center flex-col">
+            <div className="bg-orange-500 w-[99vw] p-14 flex flex-wrap gap-10 justify-center items-start">
 
-                        {city.itineraries.map((itinerary) => (
-                            <div>
-                                <div className="">
-                                    <img src={itinerary.imageItinerary} className="w-full m-5 h-auto border-2 border-white rounded-xl " alt={itinerary.name} />
+                {city.itineraries.map((itinerary) => (
+                    <div key={itinerary._id} className="w-full md:w-[45%] lg:w-[30%] bg-white rounded-2xl shadow-lg p-4">
+                        <div className="">
+                            <img src={itinerary.imageItinerary} className="w-full h-auto rounded-xl mb-4flex items-center gap-4 " alt={itinerary.name} />
 
-                                </div>
-                                <div>
-                                    <img src={itinerary.imageProfile} alt={itinerary.nameProfile} className="rounded-full w-10" />
-                                    <h2>{itinerary.name}</h2>
+                        </div>
+                        <div>
+                            <h2 className="text-lg text-center font-semibold text-gray-800">{itinerary.name}</h2>
 
-
-                                </div>
-                            </div>
+                            <img src={itinerary.imageProfile} alt={itinerary.nameProfile} className="rounded-full w-12 h-12 object-cover" />
 
 
-                        ))}
-
-
-
+                        </div>
                     </div>
-                    <div>
 
-                    </div>
-                </div>
+
+                ))}
+
+
             </div>
 
         </div>

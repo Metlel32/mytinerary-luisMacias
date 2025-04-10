@@ -5,6 +5,8 @@ import './App.css'
 import StandartdLayaout from './layaouts/StandardLayaout'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CityDetail from './components/CityDetails'
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 function App() {
 
@@ -29,8 +31,8 @@ function App() {
             element: <Cities />
           },
           {
-            path: "/cities/:id", 
-            element: <CityDetail/>
+            path: "/cities/:id",
+            element: <CityDetail />
           }
         ]
       },
@@ -48,8 +50,10 @@ function App() {
 
   return (
     <>
+      <Provider store={store}>
+        <RouterProvider router={router} ></RouterProvider>
+      </Provider>
 
-      <RouterProvider router={router} ></RouterProvider>
 
     </>
   )
