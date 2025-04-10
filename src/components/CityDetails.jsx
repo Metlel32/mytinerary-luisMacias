@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function CityDetail() {
     const { id } = useParams()
@@ -7,20 +8,23 @@ function CityDetail() {
     const [city, setCity] = useState(null)
     const [loading, setLoading] = useState(true)
 
+
     useEffect(() => {
-        async function fetchCity() {
+        const fetchCity = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/city/id/${id}`)
-                const data = await response.json()
-                setCity(data.response)
+                const response = await axios.get(`http://localhost:8080/api/city/id/${id}`)
+                setCity(response.data.response)
+
             } catch (error) {
                 console.error("Error fetching data", error)
             } finally {
                 setLoading(false)
             }
         }
-        fetchCity();
-    }, []);
+
+        fetchCity()
+    }, [id])
+    console.log(city);
 
 
     if (loading) {
@@ -47,8 +51,34 @@ function CityDetail() {
 
 
 
-            <div className="bg-orange-500 h-[40vh] w-[99vw] flex items-center justify-center">
-                <img className="w-50 rounded-2xl border" src="../src/images/construction2.jpg" alt="contruction" />
+            <div className="bg-orange-500 w-[99vw] p-14 flex items-center justify-center">
+                <div>
+                    <div className="	bg-white   w-[80%]  rounded-2xl flex items-center justify-center flex-col">
+
+                        {city.itineraries.map((itinerary) => (
+                            <div>
+                                <div className="">
+                                    <img src={itinerary.imageItinerary} className="w-full m-5 h-auto border-2 border-white rounded-xl " alt={itinerary.name} />
+
+                                </div>
+                                <div>
+                                    <img src={itinerary.imageProfile} alt={itinerary.nameProfile} className="rounded-full w-10" />
+                                    <h2>{itinerary.name}</h2>
+
+
+                                </div>
+                            </div>
+
+
+                        ))}
+
+
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
             </div>
 
         </div>

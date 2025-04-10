@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 import Card from '../components/Card'
 function Cities() {
@@ -25,19 +26,20 @@ function Cities() {
     }, [search, cities])
 
 
+    
     useEffect(() => {
-        async function fetchCities() {
+        const fetchCities = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/city/allCities")
-                const data = await response.json()
-                setCities(data.response)
-
+                const response = await axios.get("http://localhost:8080/api/city/allCities")
+                setCities(response.data.response)
             } catch (error) {
-                console.error("Error feching data", error)
+                console.error("Error fetching data", error)
             }
         }
+
         fetchCities()
     }, [])
+
 
 
 
