@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Banknote, Clock } from "lucide-react";
+import Activity from "./Activity";
 
 function CityDetail() {
     const { id } = useParams()
     const navigate = useNavigate()
     const [city, setCity] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [showComments, setShowComments] = useState(false)
 
 
     useEffect(() => {
@@ -24,6 +27,8 @@ function CityDetail() {
 
         fetchCity()
     }, [id])
+
+    console.log(city);
 
 
 
@@ -56,13 +61,50 @@ function CityDetail() {
                 {city.itineraries.map((itinerary) => (
                     <div key={itinerary._id} className="w-full md:w-[45%] lg:w-[30%] bg-white rounded-2xl shadow-lg p-4">
                         <div className="">
-                            <img src={itinerary.imageItinerary} className="w-full h-auto rounded-xl mb-4flex items-center gap-4 " alt={itinerary.name} />
+                            <img src={itinerary.imageItinerary} className="w-full h-[40vh] object-cover rounded-xl mb-4flex items-center gap-4 " alt={itinerary.name} />
 
                         </div>
-                        <div>
-                            <h2 className="text-lg text-center font-semibold text-gray-800">{itinerary.name}</h2>
+                        <div className="pt-5 flex flex-wrap ">
 
-                            <img src={itinerary.imageProfile} alt={itinerary.nameProfile} className="rounded-full w-12 h-12 object-cover" />
+                            <div className="bg-indigo-100 flex flex-col items-center justify-center  rounded-2xl w-1/3 p-3">
+                                <img src={itinerary.imageProfile} alt={itinerary.nameProfile} className="rounded-full w-12 h-12 object-cover" />
+                                <span className="font-semibold text-blue-600">Created by</span>
+                                <p className="font-extralight">{itinerary.nameProfile}</p>
+
+
+                            </div>
+                            <div className="ml-5 w-3/5">
+                                <h2 className="text-lg text-center font-semibold text-gray-800">{itinerary.name}</h2>
+                                <div className="flex justify-evenly mt-5">
+                                    <div className="flex ">
+                                        <Banknote className="mr-2 text-green-600" ></Banknote>
+                                        <p className="font-bold">{itinerary.price}$</p>
+                                    </div>
+                                    <div className="flex">
+                                        <Clock className="mr-2 text-blue-700"></Clock>
+                                        <span className="font-bold"> {itinerary.duration >= 60 && `${Math.floor(itinerary.duration / 60)}h `}
+                                        {itinerary.duration % 60 !== 0 && `${itinerary.duration % 60}min`}</span>
+
+                                    </div>
+                                    <img src="../images/construction.jpg" alt="" />
+
+                                </div>
+                                <div className="mt-5 flex flex-wrap">
+                                    {itinerary.hashtags.map((hast, index) => {
+                                        return <span className="text-white text-sm px-2 py-1 rounded-xl bg-blue-500 m-1" key={index}> {hast}</span>
+                                    })}
+                                </div>
+
+                            </div>
+
+                            <div className=" flex flex-row w-full mt-5 justify-center items-center">
+                                    <button onClick={() => setShowComments(!showComments)} className="text-center bg-gray-900 hover:bg-gray-700 text-white rounded-lg p-2">{showComments ? 'hide comments' : "View More"}</button>
+                                    
+                                    {showComments && <Activity/>}
+                                    
+                            </div>
+
+
 
 
                         </div>
