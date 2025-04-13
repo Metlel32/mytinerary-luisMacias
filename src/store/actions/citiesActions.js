@@ -1,6 +1,10 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit"
+import { createAction } from "@reduxjs/toolkit";
 import axios from "axios"
+
+
+export const searchActions = createAction('search/searchActions')
 
 
 

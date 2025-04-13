@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCities } from '../store/actions/citiesActions'
+import { fetchCities, searchActions } from '../store/actions/citiesActions'
 import Card from '../components/Card'
 
 function Cities() {
     const dispatch = useDispatch()
 
 
-    const cities = useSelector(state => state.cities.cities)
+    const cities = useSelector(state => state.cities.citiesFilter)
+    const search = useSelector(state => state.cities.searchActions)
     const status = useSelector(state => state.cities.status)
     const error = useSelector(state => state.cities.error)
-
-    const [search, setSearch] = useState("")
-    const [filteredCities, setFilteredCities] = useState([])
 
 
 
@@ -22,18 +20,10 @@ function Cities() {
         }
     }, [dispatch, status])
 
+    const handleSearchChange = (e) => {
+        dispatch(searchActions(e.target.value));
+    };
 
-    useEffect(() => {
-        if (!search) {
-            setFilteredCities(cities)
-        } else {
-            const searchLower = search.toLowerCase()
-            const filtered = cities.filter(city =>
-                city.name.toLowerCase().startsWith(searchLower)
-            )
-            setFilteredCities(filtered)
-        }
-    }, [search, cities])
 
     return (
         <>
@@ -46,14 +36,14 @@ function Cities() {
 
             <div className="flex flex-col w-full justify-center bg-indigo-100 ">
                 <div className='flex justify-center w-full'>
-                    <input type="text" value={search} onChange={e => setSearch(e.target.value)} className=" w-50 bg-blue-300/50 m-10 rounded-xl p-2 border-2 " placeholder="Search city" />
+                    <input type="text" value={search} onChange={handleSearchChange} className=" w-50 bg-blue-300/50 m-10 rounded-xl p-2 border-2 " placeholder="Search city" />
                 </div>
 
                 <div className='p-5 w-full flex flex-wrap justify-evenly'>
                     {status === "pending" && <p>Loading cities...</p>}
                     {status === "failed" && <p className="text-red-600">Error: {error}</p>}
-                    {status === "succeeded" && filteredCities.length > 0 ? (
-                        filteredCities.map(city => (
+                    {status === "succeeded" && cities.length > 0 ? (
+                        cities.map(city => (
                             <Card key={city._id} id={city._id} name={city.name} image={city.images} country={city.country} />
                         ))
                     ) : (

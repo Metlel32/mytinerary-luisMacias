@@ -19,6 +19,7 @@ const initialState = {
     itineraries: itinerariesState,
     status: StatusHttp.IDLE,
     error: null,
+    likes: {}
 }
 
 
@@ -39,5 +40,9 @@ export const itinerariesReducer = createReducer(initialState, (builder) => {
         .addCase(fetchItineraries.rejected, (state, action) => {
             state.status = StatusHttp.FAILED;
             state.error = action.error.message;
-        });
+        })
+        .addCase('itinerary/like', (state, action) => {
+            const id = action.payload;
+            state.likes[id] = (state.likes[id] || 0) + 1;
+        })
 });

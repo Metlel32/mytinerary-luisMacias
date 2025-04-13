@@ -10,5 +10,8 @@ const fetchItineraries = createAsyncThunk("itineraries/fetchItineraries", async 
   return response.data.response
 });
 
-
+export const likeItinerary = (id) => ({
+  type: 'itinerary/like',
+  payload: id
+})
 export {fetchItineraries}
