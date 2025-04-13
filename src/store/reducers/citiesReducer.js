@@ -5,7 +5,7 @@ import { fetchCities } from "../actions/citiesActions"
 export const StatusHttp = {
   IDLE: 'idle',
   PENDING: 'pending',
-  SUCCEEDED: 'succeeded', // corregido
+  SUCCEEDED: 'succeeded', 
   FAILED: 'failed',
 }
 

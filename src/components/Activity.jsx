@@ -1,8 +1,8 @@
-function Activity () {
-    return(
+function Activity() {
+    return (
         <>
-            <img src="../../images/construction.jpg" alt="" />
-            <p>... construction</p>
+            <p>...Under Construction</p>
+            <img className="w-[50%] m-2" src="../src/images/construction.jpg" alt="" />
         </>
     )
 
